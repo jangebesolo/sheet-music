@@ -6,26 +6,28 @@
 }
 
 global = { \key d \minor \time 3/2 }
-Cantus = \relative { \partial 2 g2 | b1 c2 | d1 e2 | f1 e2 d1 d2 | c4( d es2) d c1  \break}
-
+CantusAa = { g2 | b1 c2 | d1 e2 | f1 e2 d1 }
+CantusAb =  { d2 | c4( d es2) d c1 g2 | g4( a b2) a | g1 }
+Cantus = \relative { 
+  \CantusAa \CantusAb 
+  \CantusAa \CantusAb 
+  }
 
 A = \lyricmode { Pu -- er na -- tus in Beth -- le -- hem, }
 B = \lyricmode { Al -- le -- lu -- ja }
 
-TextOne = \lyricmode { \A \B }
-TextTwo = \lyricmode { Cov -- er his __ head with turf __ or stone, 'Tis all one, 'tis all one, with turf or stone, 'this all one. }
-TextThree = \lyricmode { Pray for the soul of gen -- tle John, If you please you may, or let __ it a -- lone, 'tis all one. }
+TextOne = \lyricmode { \A \B \B }
 
 \score {
     <<  
       \new Voice = "melody" {
-        \relative c'' { \global
+        \relative c' { \global
         \Cantus   
         }
       }
       \new Lyrics {
         \lyricsto "melody" {
-          \TextOne \TextTwo \TextThree
+          \TextOne 
         }
       }
     >>
